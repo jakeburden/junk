@@ -4,17 +4,18 @@
 //! ```
 //! use junk;
 //!
-//! junk::is(&path); // Check if filename is junk.
-//! junk::not(&path); // Check if filename is not junk.
+//! junk::is(".test.swp"); // Check if filename is junk.
+//! junk::not(".test.swp"); // Check if filename is not junk.
 //! ```
 
 #![forbid(unsafe_code, future_incompatible, rust_2018_idioms)]
 #![deny(missing_debug_implementations, nonstandard_style)]
 #![warn(missing_docs, missing_doc_code_examples, unreachable_pub)]
 
-use regex::Regex;
+use regex::Regex as Rgx;
 
-const BLACKLIST: &str = concat!(
+/// Regex used for matching junk files.
+pub static REGEX: &str = concat!(
     // # All
     "^npm-debug\\.log$|", // Error log for npm
     "^\\..*\\.swp$|",     // Swap file for vim state
@@ -36,13 +37,13 @@ const BLACKLIST: &str = concat!(
     "@eaDir$",          // Synology Diskstation "hidden" folder where the server stores thumbnails
 );
 
-/// Tests is a filename is a junk file.
+/// Returns true if filename matches a junk file.
 pub fn is(filename: &str) -> bool {
-    let re: Regex = Regex::new(BLACKLIST).unwrap();
+    let re: Rgx = Rgx::new(REGEX).unwrap();
     re.is_match(filename)
 }
 
-/// Tests is a filename is not a junk file.
+/// Returns true if filename doesn't match a junk file.
 pub fn not(filename: &str) -> bool {
     !is(filename)
 }
