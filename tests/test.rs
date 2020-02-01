@@ -40,6 +40,6 @@ fn is_not_junk() {
 fn assert_regex() {
   assert_eq!(
     junk::REGEX,
-    "^npm-debug\\.log$|^\\..*\\.swp$|^\\.DS_Store$|^\\.AppleDouble$|^\\.LSOverride$|^Icon\\r$|^\\._.*|^.Spotlight-V100(?:$|/)|\\.Trashes|^__MACOSX$|~$|^Thumbs\\.db$|^ehthumbs\\.db$|^Desktop\\.ini$|@eaDir$"
+    r"^npm-debug\.log$|^\..*\.swp$|^\.DS_Store$|^\.AppleDouble$|^\.LSOverride$|^Icon\r$|^\._.*|^.Spotlight-V100(?:$|/)|\.Trashes|^__MACOSX$|~$|^Thumbs\.db$|^ehthumbs\.db$|^Desktop\.ini$|@eaDir$"
   );
 }

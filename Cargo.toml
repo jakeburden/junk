@@ -1,6 +1,6 @@
 [package]
 name = "junk"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["jakeburden <jburden@gitlab.com>"]
 edition = "2018"
 repository = "https://gitlab.com/jakeburden/junk"
@@ -12,3 +12,4 @@ description = "Filter out OS junk files like .DS_Store and Thumbs.db. A Rust imp
 
 [dependencies]
 regex = "1.3.3"
+lazy_static = "1.4.0"
